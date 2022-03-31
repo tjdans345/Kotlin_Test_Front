@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import Input from "./components/input";
+import Todo from "./components/todo";
 
 function App() {
   const baseUrl = "http://localhost:9090/api/v1";
@@ -90,7 +92,12 @@ function App() {
   return (
     <div className="App">
       <h1>TODO LIST</h1>
-      <form onSubmit={insertTodo} method="POST">
+      <Input
+        handleSubmit={insertTodo}
+        input={input}
+        handleChange={changeText}
+      />
+      {/* <form onSubmit={insertTodo} method="POST">
         <label>
           Todo &nbsp;
           <input
@@ -101,28 +108,34 @@ function App() {
           />
         </label>
         <input type="submit" value="Create" />
-      </form>
+      </form> */}
 
       {
         // todos 가 널이 아니면 출력 null 이면 출력x
         todos
           ? todos.map((todo) => {
               return (
-                <div className="todo" key={todo.id}>
-                  <h3>
-                    <label
-                      className={todo.completed ? "completed" : null}
-                      onClick={() => {
-                        updateTodo(todo.id);
-                      }}
-                    >
-                      {todo.todoName}
-                    </label>
-                    <label onClick={() => deleteTodo(todo.id)}>
-                      &nbsp;&nbsp;&nbsp; ❌
-                    </label>
-                  </h3>
-                </div>
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  handleClick={() => updateTodo(todo.id)}
+                  handleDelete={() => deleteTodo(todo.id)}
+                />
+                // <div className="todo" key={todo.id}>
+                //   <h3>
+                //     <label
+                //       className={todo.completed ? "completed" : null}
+                //       onClick={() => {
+                //         updateTodo(todo.id);
+                //       }}
+                //     >
+                //       {todo.todoName}
+                //     </label>
+                //     <label onClick={() => deleteTodo(todo.id)}>
+                //       &nbsp;&nbsp;&nbsp; ❌
+                //     </label>
+                //   </h3>
+                // </div>
               );
             })
           : null
