@@ -97,20 +97,6 @@ function App() {
         input={input}
         handleChange={changeText}
       />
-      {/* <form onSubmit={insertTodo} method="POST">
-        <label>
-          Todo &nbsp;
-          <input
-            type="text"
-            required={true}
-            value={input}
-            onChange={changeText}
-          />
-        </label>
-        <input type="submit" value="Create" />
-      </form> */}
-
-      {
         // todos 가 널이 아니면 출력 null 이면 출력x
         todos
           ? todos.map((todo) => {
@@ -121,21 +107,6 @@ function App() {
                   handleClick={() => updateTodo(todo.id)}
                   handleDelete={() => deleteTodo(todo.id)}
                 />
-                // <div className="todo" key={todo.id}>
-                //   <h3>
-                //     <label
-                //       className={todo.completed ? "completed" : null}
-                //       onClick={() => {
-                //         updateTodo(todo.id);
-                //       }}
-                //     >
-                //       {todo.todoName}
-                //     </label>
-                //     <label onClick={() => deleteTodo(todo.id)}>
-                //       &nbsp;&nbsp;&nbsp; ❌
-                //     </label>
-                //   </h3>
-                // </div>
               );
             })
           : null
