@@ -97,9 +97,8 @@ function App() {
         input={input}
         handleChange={changeText}
       />
-        // todos 가 널이 아니면 출력 null 이면 출력x
-        todos
-          ? todos.map((todo) => {
+
+        {/* todos ? todos.map((todo,idx) => {
               return (
                 <Todo
                   key={todo.id}
@@ -108,9 +107,8 @@ function App() {
                   handleDelete={() => deleteTodo(todo.id)}
                 />
               );
-            })
-          : null
-      }
+              }
+              ) : null */}
     </div>
   );
 }
